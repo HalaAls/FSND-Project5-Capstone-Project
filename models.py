@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, create_engine
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Table, Column, Float, Integer, String, MetaData, ForeignKey
+from sqlalchemy import Table, Column, Integer, String, MetaData
 
 import json
 import os
@@ -27,74 +27,85 @@ def setup_db(app, database_path=database_path):
 Movies
 Have title and release year
 '''
-class Movies(db.Model):
-  __tablename__ = 'movies'
-  
-  id = Column(Integer(), primary_key=True)
-  title = Column(String(80))
-  release_year = Column(Integer())
 
-  def format(self):
-    return {
-      'id': self.id,
-      'title': self.title,
-      'release_year': self.release_year}
-  '''
+
+class Movies(db.Model):
+    __tablename__ = 'movies'
+
+    id = Column(Integer(), primary_key=True)
+    title = Column(String(80))
+    release_year = Column(Integer())
+
+    def format(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'release_year': self.release_year}
+    '''
   insert()
   '''
-  def insert(self):
-    db.session.add(self)
-    db.session.commit()
-  '''
+
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+    '''
   delete()
   '''
-  def delete(self):
-    db.session.delete(self)
-    db.session.commit()
-  '''
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+    '''
   update()
   '''
-  def update(self):
-    db.session.commit()
 
-  def __repr__(self):
-    return json.dumps(self.format())
+    def update(self):
+        db.session.commit()
+
+    def __repr__(self):
+        return json.dumps(self.format())
 
 
 '''
-Actors 
+Actors
 Have name, age and gender
 '''
-class Actors(db.Model):  
-  __tablename__ = 'actors'
 
-  id = Column(Integer(), primary_key=True)
-  name = Column(String(80))
-  age = Column(Integer())
-  gender = Column(Integer())
 
-  def format(self):
-    return {
-      'id': self.id,
-      'name': self.name,
-      'age': self.age,
-      'gender': self.gender}
-  '''
+class Actors(db.Model):
+    __tablename__ = 'actors'
+
+    id = Column(Integer(), primary_key=True)
+    name = Column(String(80))
+    age = Column(Integer())
+    gender = Column(Integer())
+
+    def format(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'age': self.age,
+            'gender': self.gender}
+    '''
   insert()
   '''
-  def insert(self):
-    db.session.add(self)
-    db.session.commit()
-  '''
+
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+    '''
   delete()
   '''
-  def delete(self):
-    db.session.delete(self)
-    db.session.commit()
-  '''
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+    '''
   update()
   '''
-  def update(self):
-    db.session.commit()
-  def __repr__(self):
-    return json.dumps(self.format())
+
+    def update(self):
+        db.session.commit()
+
+    def __repr__(self):
+        return json.dumps(self.format())

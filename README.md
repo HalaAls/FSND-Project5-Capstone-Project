@@ -58,6 +58,10 @@ export FLASK_APP=app
 export FLASK_ENV=development
 flask run
 ```
+## Running the Test
+```
+python3 test.py
+```
 We can now also open the application via Heroku using the URL:
 https://halafsndcapstone.herokuapp.com/
 
