@@ -1,27 +1,19 @@
 import os
-from flask import Flask, jsonify, abort
+from flask import ( Flask, request, jsonify, abort)
 from flask_cors import CORS
-from models import setup_db, Movies, Actors
-from auth import requires_auth, AuthError
+from models import ( setup_db, Movies, Actors)
+from auth import ( requires_auth, AuthError)
 
 
 def create_app(test_config=None):
 
     app = Flask(__name__)
     setup_db(app)
-    CORS(app)
+    CORS(app, resources={"/": {"origins": "*"}})
 
     @app.route('/')
     def get_greeting():
-        # excited = os.environ['EXCITED']
-        # greeting = "Hello"
-        # if excited == 'true':
-        #     greeting = greeting + "!!!!!"
         return 'hello!'
-
-    # @app.route('/coolkids')
-    # def be_cool():
-    #     return "Be cool, man, be coooool! You're almost a FSND grad!"
 
     @app.route('/Movies', methods=['GET'])
     @requires_auth('get:movies')
@@ -113,9 +105,9 @@ def create_app(test_config=None):
         try:
             data = request.get_json()
             actor = Actors.query.filter_by(id=id).one_or_none()
-            name = data.get('name', None)
-            age = data.get('age', None)
-            gender = data.get('gender', None)
+            name = data.get('name')
+            age = data.get('age')
+            gender = data.get('gender')
 
             if actor is None:
                 abort(400)

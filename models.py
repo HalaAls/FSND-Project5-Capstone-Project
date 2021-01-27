@@ -28,7 +28,7 @@ Movies
 Have title and release year
 '''
 class Movies(db.Model):
-  __tablename__ = 'Movies'
+  __tablename__ = 'movies'
   
   id = Column(Integer(), primary_key=True)
   title = Column(String(80))
@@ -66,7 +66,7 @@ Actors
 Have name, age and gender
 '''
 class Actors(db.Model):  
-  __tablename__ = 'Actors'
+  __tablename__ = 'actors'
 
   id = Column(Integer(), primary_key=True)
   name = Column(String(80))
