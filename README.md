@@ -1,3 +1,11 @@
+## Full Stack Developer Nanodegree Program - Udacity x Misk 
+
+January 27, 2021
+
+Part 5: Capstone Project
+Project 5: Capstone Project
+-----
+
 # Full Stack - Capstone Project
 
 ## About
@@ -69,7 +77,8 @@ The live application can only be used to generate tokens via Auth0, the endpoint
 using the token since I did not build a frontend for the application.
 
 ## DATA MODELING:
-#### models.py
+
+### models.py
 Models:
 - There are two tables created: Movies and Actors
 - Movies with attributes title and release year
